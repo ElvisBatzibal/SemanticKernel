@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CoreSK.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+383c82dfd59fce3695b8bd9692aa56a4b1e29f14")]
 [assembly: System.Reflection.AssemblyProductAttribute("CoreSK.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CoreSK.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
