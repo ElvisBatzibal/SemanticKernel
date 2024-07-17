@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreSK.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.SemanticKernel;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,15 +13,21 @@ namespace CoreSK.API.Controllers
     public class CopilotController : Controller
     {
 
-
+        private IOpenAIService _openAIService;
+        public CopilotController(IOpenAIService openAIService)
+        {
+            _openAIService = openAIService;
+        }
         // GET api/values/5
         //[HttpGet("{question}")]
         [HttpGet]
-        public IAsyncEnumerable<string> Get([FromQuery] string question)
+        public  IAsyncEnumerable<string> Get([FromQuery] string question)
         {
             //return GetResponseAsync(question);
-            return kernel.InvokePromptStreamingAsync<string>(question);
+             return _openAIService.InvokePromptStreaming(question);
+           
         }
+
 
         static async IAsyncEnumerable<string> GetResponseAsync(string question)
         {
