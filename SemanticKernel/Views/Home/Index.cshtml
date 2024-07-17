@@ -42,7 +42,9 @@ async function sendMessage() {
                 const { done, value } = await reader.read();
                 if (done) break;
                 result += decoder.decode(value, { stream: true });
-                addMessageToChat('bot', result);
+                const processedText = processResponse(result);
+                //updateChatWithResponse(processedText);
+                addMessageToChat('bot', processedText);
             }
         } else {
             addMessageToChat('bot', 'Error al obtener la respuesta.');
@@ -50,6 +52,31 @@ async function sendMessage() {
     } catch (error) {
         addMessageToChat('bot', 'Error de conexión.');
     }
+}
+
+function processResponse(response) {
+   
+    try {
+        const responseArray = JSON.parse(response);
+        return responseArray.join('').trim();
+    } catch (error) {
+        console.error('Error parsing response:', error);
+        return response;
+    }
+}
+
+function updateChatWithResponse(response) {
+    const chatWindow = document.getElementById('chat-window');
+    let botMessageElement = chatWindow.querySelector('.message.bot');
+
+    if (!botMessageElement) {
+        botMessageElement = document.createElement('div');
+        botMessageElement.className = 'message bot';
+        chatWindow.appendChild(botMessageElement);
+    }
+
+    botMessageElement.innerText = response;
+    chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
 function addMessageToChat(sender, text) {
