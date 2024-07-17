@@ -1,0 +1,14 @@
+/Users/elvysbatzibal/Projects/SemanticKernel/ClientSK/bin/Debug/net8.0/ClientSK
+/Users/elvysbatzibal/Projects/SemanticKernel/ClientSK/bin/Debug/net8.0/ClientSK.deps.json
+/Users/elvysbatzibal/Projects/SemanticKernel/ClientSK/bin/Debug/net8.0/ClientSK.runtimeconfig.json
+/Users/elvysbatzibal/Projects/SemanticKernel/ClientSK/bin/Debug/net8.0/ClientSK.dll
+/Users/elvysbatzibal/Projects/SemanticKernel/ClientSK/bin/Debug/net8.0/ClientSK.pdb
+/Users/elvysbatzibal/Projects/SemanticKernel/ClientSK/obj/Debug/net8.0/ClientSK.GeneratedMSBuildEditorConfig.editorconfig
+/Users/elvysbatzibal/Projects/SemanticKernel/ClientSK/obj/Debug/net8.0/ClientSK.AssemblyInfoInputs.cache
+/Users/elvysbatzibal/Projects/SemanticKernel/ClientSK/obj/Debug/net8.0/ClientSK.AssemblyInfo.cs
+/Users/elvysbatzibal/Projects/SemanticKernel/ClientSK/obj/Debug/net8.0/ClientSK.csproj.CoreCompileInputs.cache
+/Users/elvysbatzibal/Projects/SemanticKernel/ClientSK/obj/Debug/net8.0/ClientSK.dll
+/Users/elvysbatzibal/Projects/SemanticKernel/ClientSK/obj/Debug/net8.0/refint/ClientSK.dll
+/Users/elvysbatzibal/Projects/SemanticKernel/ClientSK/obj/Debug/net8.0/ClientSK.pdb
+/Users/elvysbatzibal/Projects/SemanticKernel/ClientSK/obj/Debug/net8.0/ClientSK.genruntimeconfig.cache
+/Users/elvysbatzibal/Projects/SemanticKernel/ClientSK/obj/Debug/net8.0/ref/ClientSK.dll
