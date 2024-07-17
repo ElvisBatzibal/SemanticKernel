@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using CoreSK.API.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -23,8 +24,21 @@ namespace CoreSK.API.Controllers
         [HttpGet]
         public  IAsyncEnumerable<string> Get([FromQuery] string question)
         {
-            //return GetResponseAsync(question);
-             return _openAIService.InvokePromptStreaming(question);
+           //return GetResponseAsync(question);
+            return _openAIService.InvokePromptStreaming(question);
+           
+        }
+
+        [HttpGet("secundary")]
+        public  IAsyncEnumerable<string> GetSecundary([FromQuery] string question)
+        {
+            string PathFile = "TensorPrimitives.netcore.txt";
+            //String PathFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, FileName);
+            var code = System.IO.File.ReadAllLines(PathFile);
+             var prompt = new StringBuilder("Por favor responda esta pregunta: ").AppendLine(question);
+            prompt.AppendLine("*** Código a utilizar para responder la pregunta: ").AppendJoin("\n", code);
+        
+             return _openAIService.InvokePromptStreaming(prompt.ToString());
            
         }
 

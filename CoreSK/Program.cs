@@ -38,6 +38,7 @@ app.UseAuthorization();
 // Usar la política de CORS
 app.UseCors("AllowSpecificOrigin");
 app.MapControllers();
-
+// Configurar el servidor Kestrel para escuchar en el puerto 7009
+//app.Urls.Add("http://localhost:7009");
 app.Run();
 
