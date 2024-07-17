@@ -11,7 +11,12 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-    <PackageReference Include="Microsoft.SemanticKernel" Version="1.16.0" />
+    <PackageReference Include="Microsoft.SemanticKernel" Version="1.7.1" />
+    <PackageReference Include="Microsoft.ML.Tokenizers" Version="0.22.0-preview.24162.2" />
+    <PackageReference Include="System.Numerics.Tensors" Version="9.0.0-preview.1.24080.9" />
+    <PackageReference Include="SharpToken" Version="2.0.3" />
+    <PackageReference Include="Microsoft.SemanticKernel.Connectors.Onnx" Version="1.7.1-alpha" />
+    <PackageReference Include="Microsoft.SemanticKernel.Connectors.Google" Version="1.7.1-alpha" />
   </ItemGroup>
 
   <ItemGroup>

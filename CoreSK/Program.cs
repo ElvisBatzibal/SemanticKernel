@@ -4,7 +4,10 @@ using Microsoft.SemanticKernel;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddKernel().AddOpenAIChatCompletion("gpt-4", builder.Configuration["AI:OpenAI:ApiKey"]);
+builder.Services.AddKernel()
+    .AddOpenAIChatCompletion("gpt-4", builder.Configuration["AI:OpenAI:ApiKey"])
+    .AddOpenAITextEmbeddingGeneration("text-embedding-3-small", builder.Configuration["AI:OpenAI:ApiKey"]);
+
 builder.Services.AddTransient<IOpenAIService, OpenAIService>();
 
 
@@ -19,6 +22,7 @@ builder.Services.AddCors(options =>
 
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
