@@ -6,6 +6,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddKernel().AddOpenAIChatCompletion("gpt-4", builder.Configuration["AI:OpenAI:ApiKey"]);
 builder.Services.AddTransient<IOpenAIService, OpenAIService>();
+
+
+// Configurar política de CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder.WithOrigins("https://localhost:7168") // Agrega la URL de tu aplicación cliente aquí
+                          .AllowAnyHeader()
+                          .AllowAnyMethod());
+});
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -23,7 +35,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+// Usar la política de CORS
+app.UseCors("AllowSpecificOrigin");
 app.MapControllers();
 
 app.Run();
