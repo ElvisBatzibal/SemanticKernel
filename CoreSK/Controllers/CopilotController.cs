@@ -32,7 +32,7 @@ namespace CoreSK.API.Controllers
         // GET api/values/5
         //[HttpGet("{question}")]
         [HttpGet]
-        public  IAsyncEnumerable<string> Get([FromQuery] string question)
+        public  string Get([FromQuery] string question)
         {
            //return GetResponseAsync(question);
             return _openAIService.InvokePromptStreaming(question);
