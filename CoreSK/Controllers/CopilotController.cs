@@ -62,8 +62,7 @@ namespace CoreSK.API.Controllers
             var chunks = TextChunker.SplitPlainTextParagraphs([..code], 500, 100, null, text => tokenizer.CountTokens(text));
 
 
-            List<(string Content, ReadOnlyMemory<float> Vector)> dbVectorial =
-           chunks.Zip(await _embeddingService.GenerateEmbeddingsAsync(chunks)).ToList();
+            List<(string Content, ReadOnlyMemory<float> Vector)> dbVectorial = chunks.Zip(await _embeddingService.GenerateEmbeddingsAsync(chunks)).ToList();
 
             var qe = await _embeddingService.GenerateEmbeddingAsync(question);
 
@@ -86,7 +85,7 @@ namespace CoreSK.API.Controllers
 
   
 
-        static async IAsyncEnumerable<string> GetResponseAsync(string question, string code)
+        static async IAsyncEnumerable<string> GetResponseAsync(string question)
         {
 
             foreach (string word in question.Split(' '))

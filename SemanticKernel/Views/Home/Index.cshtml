@@ -25,7 +25,7 @@ async function sendMessage() {
     inputElement.value = '';
 
     try {
-        var UrlRequest= `https://localhost:7009/api/Copilot?question=${encodeURIComponent(message)}`;
+        var UrlRequest = `https://localhost:7009/api/Copilot/secundarychunk?question=${encodeURIComponent(message)}`;
         console.log(UrlRequest);
         const response = await fetch(UrlRequest, {
             method: 'GET',
