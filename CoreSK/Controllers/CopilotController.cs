@@ -85,35 +85,7 @@ namespace CoreSK.API.Controllers
 
   
 
-            var tokenizer = await Tiktoken.CreateByModelNameAsync("gpt-4");
-            var chunks = TextChunker.SplitPlainTextParagraphs([..code], 500, 100, null, text => tokenizer.CountTokens(text));
-
-
-            List<(string Content, ReadOnlyMemory<float> Vector)> dbVectorial =
-           chunks.Zip(await _embeddingService.GenerateEmbeddingsAsync(chunks)).ToList();
-
-            var qe = await _embeddingService.GenerateEmbeddingAsync(question);
-
-            var prompt = new StringBuilder("Por favor responda esta pregunta: ")
-                .AppendLine(question)
-                .AppendLine("*** Codigo: ");
-
-            int tokensRemaining = 2000;
-
-            foreach (var c in dbVectorial.OrderByDescending(c => TensorPrimitives.CosineSimilarity<float>(qe.Span, c.Vector.Span)))
-            {
-                if ((tokensRemaining -= tokenizer.CountTokens(c.Content)) < 0) break;
-                prompt.AppendLine(c.Content);
-
-            }
-
-            return  _openAIService.InvokePromptStreaming(prompt.ToString());
-
-        }
-
-  
-
-        static async IAsyncEnumerable<string> GetResponseAsync(string question, string code)
+        static async IAsyncEnumerable<string> GetResponseAsync(string question)
         {
 
             foreach (string word in question.Split(' '))
